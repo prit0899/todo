@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StatusBar, Vibration, Button, StyleSheet, Text, View, FlatList, Image, TouchableHighlight, Alert, TextInput } from 'react-native';
+import { StatusBar, Vibration, Button, StyleSheet, Text, View, FlatList, Image, TouchableOpacity,TouchableHighlight, Alert, TextInput } from 'react-native';
 
 export default function App() {
   const [arr, setArr] = useState(["A", "B", "C"]);
@@ -63,12 +63,13 @@ export default function App() {
         value={inputText}
         onEndEditing={addCustomItem}
       />
-      <View style={styles.btnStyle}>
-      <Button style={{borderColor: '#0a00FF',}}
+      
+      <TouchableOpacity  style={styles.btnStyle}
         onPress={onPressAdd}
-        title="Add Goal"
-      />
-      </View>
+      >
+        <Text style={{    color: '#fff',}}>Add Goal</Text>
+        </TouchableOpacity>
+      
       
         </View> 
 
@@ -99,10 +100,10 @@ export default function App() {
         />
       </View>
 
-      <Button
-        onPress={onPressLearnMore}
-        title="Add More"
-      />
+      <TouchableOpacity  style={styles.btnStyle}
+        onPress={onPressLearnMore}>
+        <Text style={{    color: '#fff',}}>Add Goal</Text>
+        </TouchableOpacity>
       <StatusBar style="auto" />
     </View>
   );
@@ -138,8 +139,11 @@ const styles = StyleSheet.create({
   },
   btnStyle: {
     width: 100,
+    padding: 8,
     backgroundColor: '#0a00FF',
-    borderRadius: 10
+    borderRadius: 10,
+    alignItems: 'center', 
+    justifyContent: 'bottom'
   },
   contentListStyle: {
     flex: 1,
