@@ -10,7 +10,7 @@ export default function App() {
     setArr(prevArr => [...prevArr, newItem]);
   };
 
-  const deleteItem = (index) => {
+  const deleteItem = (index = 0)  => {
     const newArray = [...arr];
     newArray.splice(index, 1);
     setArr(newArray);
@@ -81,7 +81,7 @@ export default function App() {
           contentContainerStyle={{ flex: 1, justifyContent: 'center', alignItems: "stretch" }}
           renderItem={({ item, index }) => (
             
-            <TouchableHighlight onPress={() => deleteItem(index)}>
+            
               <View>
                 <View
                   style={styles.flatListSubViewStyle}
@@ -91,10 +91,13 @@ export default function App() {
                     source={{ uri: 'https://reactnative.dev/img/tiny_logo.png' }}
                   />
                   <Text style={styles.title}>{item}</Text>
-                  
+                  <TouchableOpacity  style={styles.btnStyle}
+                   onPress={onPressLearnMore}>
+                  <Text style={{    color: '#fff',}}>Delete</Text>
+                  </TouchableOpacity>
                 </View>
               </View>
-            </TouchableHighlight>
+            
           )}
           keyExtractor={(item, index) => index.toString()}
         />
